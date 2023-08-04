@@ -57,14 +57,14 @@ class CashDro {
 
   /// 支付交易的当前状态
   /// [operationId] 操作id
-  Future<Result> askOperation(String operationId) async {
+  Future<Result<AskOperation>> askOperation(String operationId) async {
     final params = {
       'operation': 'askOperation',
       'user': user,
       'password': password,
       'operationId': operationId,
     };
-    return await _http.get<String>(url,
+    return await _http.get<AskOperation>(url,
         queryParameters: params, jsonAsT: _convertAskOperation);
   }
 
