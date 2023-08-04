@@ -28,6 +28,7 @@ class Http {
       });
       url = url.substring(0, url.length - 1);
     }
+    httpClient.connectionTimeout = Duration(seconds: 30);
     HttpClientRequest request = await httpClient.getUrl(Uri.parse(url));
     request.headers.set('Content-Type', 'application/json');
     HttpClientResponse response = await request.close();
